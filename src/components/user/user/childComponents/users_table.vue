@@ -26,7 +26,7 @@
             <el-button icon="el-icon-delete" type="danger" size="mini" @click="deleted(scope.$index)"></el-button>
           </el-tooltip>
           <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
-            <el-button icon="el-icon-setting" type="warning" size="mini"></el-button>
+            <el-button icon="el-icon-setting" type="warning" size="mini" @click="addRoles(scope.row)"></el-button>
           </el-tooltip>
         </template>
       </el-table-column>
@@ -46,15 +46,23 @@
                       @isFalse="isFalse"
                       :userMes="onlyUser"
                       @editUserMes="editUserMes"/>
+    <users_addRoles :showRole="showRole"
+                    @isFalse="isFalses"
+                    @finish="finish"
+                    :twoName="twoName"
+                    :rolesList="rolesList"
+                    @selectClose="selectClose"/>
   </div>
 </template>
 
 <script>
-import users_editDialog from '@/components/user/users_editDialog'
+import users_addRoles from './users_addRoles'
+import users_editDialog from './users_editDialog'
 export default {
   name: "users_table",
   components:{
-    users_editDialog
+    users_editDialog,
+    users_addRoles
   },
   props:{
     users: {
@@ -78,8 +86,10 @@ export default {
     return {
       isShow: false,
       isDelete: false,
-      currentIndex: 0,
-      onlyUser: {}
+      showRole: false,
+      onlyUser: {},
+      twoName: {},
+      rolesList: []
     }
   },
   methods:{
@@ -95,14 +105,13 @@ export default {
       this.$emit('change', userInfo)
     },
     async deleted(index){
-      this.currentIndex = index
       const confirm = await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).catch(err => err)
       if(confirm !== 'confirm') return this.$message.info('已取消删除')
-      this.$emit('reGet', this.users, this.currentIndex)
+      this.$emit('reGet', this.users, index)
     },
     editMes(index){
       const {id, username} = this.users[index]
@@ -112,11 +121,33 @@ export default {
     isFalse(){
       this.isShow = false
     },
+    isFalses(){
+      this.showRole = false
+    },
     editUserMes(usersMes){
       this.$emit('editUserMes', usersMes)
       setTimeout(()=>{
         this.isFalse()
       }, 300)
+    },
+    async addRoles(mes){
+      this.twoName = mes
+      const {data: res} = await this.$http.get('roles')
+      if(res.meta.status !== 200) return this.$message.error('获取角色列表失败！')
+      this.rolesList = res.data
+      this.showRole = true
+    },
+    async finish(newRoleId){
+      const {data:res} = await this.$http.put(`users/${this.twoName.id}/role`, {
+        rid: newRoleId
+      })
+      if(res.meta.status !== 200) return this.$message.error('更新角色失败！')
+      this.$message.success('更新角色成功！')
+      this.$emit('updateMes')
+      this.showRole = false
+    },
+    selectClose(){
+      this.twoName = {}
     }
   }
 }

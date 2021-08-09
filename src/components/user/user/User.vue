@@ -23,7 +23,8 @@
                  @handleCurrentChange="handleCurrentChange"
                  @change="change"
                  @reGet="reGet"
-                 @editUserMes="editUserMes"/>
+                 @editUserMes="editUserMes"
+                 @updateMes="getUsersMes"/>
   </el-card>
   <users_addDialog :isShow="isShow" @isFalse="isFalse" @commit="commit"/>
 </div>
@@ -31,8 +32,8 @@
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb'
-import users_table from '@/components/user/users_table'
-import users_addDialog from '@/components/user/users_addDialog'
+import users_table from '@/components/user/user/childComponents/users_table'
+import users_addDialog from '@/components/user/user/childComponents/users_addDialog'
 
 export default {
   name: "User",

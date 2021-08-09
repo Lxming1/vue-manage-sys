@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const login = () => import('./components/Login')
-const home = () => import('./components/Home')
-const welcome = () => import('./components/Welcome')
+const login = () => import('./views/Login')
+const home = () => import('./views/Home')
+const welcome = () => import('./views/Welcome')
 
-const user = () => import('./components/user/User')
+const user = () => import('./components/user/user/User')
 
-const roles = () => import('./components/roles/Roles')
-const rights = () => import('./components/roles/Rights')
+const roles = () => import('./components/roles/roles/Roles')
+const rights = () => import('./components/roles/rights/Rights')
 
 const goods = () => import('./components/goods/Goods')
 const params = () => import('./components/goods/Params')

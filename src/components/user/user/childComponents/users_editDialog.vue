@@ -3,7 +3,6 @@
     title="修改用户信息"
     :visible.sync="isShow"
     width="50%"
-    @close="close"
     :before-close="isFalse"
     :close-on-click-modal="false">
     <el-form label-width="70px" :model="userMes" :rules="rules" ref="formRef">
