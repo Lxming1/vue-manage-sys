@@ -3,11 +3,14 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from '@/plugins/ElementUI'
 import axios from './network/axios'
+import ZKTable from 'vue-table-with-tree-grid'
 
 ElementUI()
 axios()
 
 Vue.config.productionTip = false
+
+Vue.component('tree-table', ZKTable)
 
 new Vue({
   router,

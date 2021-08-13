@@ -10,8 +10,7 @@
       <el-table-column type="index" label="#" width="50"></el-table-column>
       <el-table-column prop="authName" label="权限名称"></el-table-column>
       <el-table-column prop="path" label="路径"></el-table-column>
-      <el-table-column prop="mobile"
-                       label="权限等级">
+      <el-table-column prop="mobile" label="权限等级">
         <template slot-scope="scope">
           <el-tag
             :type="scope.row.level | getTagColor"
@@ -38,35 +37,16 @@
 </template>
 
 <script>
+import {tagStyle} from '@/common/mixin'
+
 export default {
   name: "rights_table",
+  mixins:[tagStyle],
   props:{
     rightMes:{
       type: Array,
       default(){
         return []
-      }
-    }
-  },
-  filters:{
-    getLevel(num){
-      switch (num){
-        case "0":
-          return '一级';
-        case "1":
-          return '二级';
-        case "2":
-          return '三级';
-      }
-    },
-    getTagColor(num){
-      switch (num){
-        case "0":
-          return 'primary';
-        case "1":
-          return 'success';
-        case "2":
-          return 'warning';
       }
     }
   }

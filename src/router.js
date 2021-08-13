@@ -10,9 +10,9 @@ const user = () => import('./components/user/user/User')
 const roles = () => import('./components/roles/roles/Roles')
 const rights = () => import('./components/roles/rights/Rights')
 
-const goods = () => import('./components/goods/Goods')
-const params = () => import('./components/goods/Params')
-const categories = () => import('./components/goods/Categories')
+const goods = () => import('./components/goods/goods/Goods')
+const params = () => import('./components/goods/params/Params')
+const categories = () => import('./components/goods/categories/Categories')
 
 const orders = () => import('./components/orders/Orders')
 

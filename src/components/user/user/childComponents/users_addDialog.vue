@@ -9,9 +9,9 @@
     <el-form label-width="70px" :model="message" :rules="rules" ref="formRef">
       <el-form-item :label="item" v-for="(item,index) in addMes"
                     :prop="Object.keys(message)[index]">
-        <el-input v-model="message[Object.keys(message)[index]]"
+        <el-input v-model="Object.values(message)[index]"
                   :placeholder="showMes(item)"
-                  :type="isPassword(item)"></el-input>
+                  :type="isPassword(item)"/>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

@@ -7,10 +7,12 @@
     :before-close="isFalse"
     :close-on-click-modal="false">
     <el-form label-width="70px" :model="editObj" ref="formRef">
-      <el-form-item :label="item" v-for="(item,index) in addMes"
-                    :prop="Object.keys(editObj)[index+1]">
-        <el-input v-model="editObj[Object.keys(editObj)[index+1]]"
-                  :placeholder="showMes(item)"></el-input>
+      <el-form-item
+        :label="item" v-for="(item,index) in addMes"
+        :prop="Object.keys(editObj)[index+1]">
+        <el-input
+          v-model="editObj[Object.keys(editObj)[index+1]]"
+          :placeholder="showMes(item)"></el-input>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

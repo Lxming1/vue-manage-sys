@@ -58,12 +58,15 @@
 <script>
 import users_addRoles from './users_addRoles'
 import users_editDialog from './users_editDialog'
+import {pagination} from '@/common/mixin'
+
 export default {
   name: "users_table",
   components:{
     users_editDialog,
     users_addRoles
   },
+  mixins:[pagination],
   props:{
     users: {
       type: Array,
@@ -93,14 +96,6 @@ export default {
     }
   },
   methods:{
-    //监听 pagesize改变的事件
-    handleSizeChange(newSize){
-      this.$emit('handleSizeChange',newSize)
-    },
-    //监听 页码改变的事件
-    handleCurrentChange(newPage){
-      this.$emit('handleCurrentChange', newPage)
-    },
     change(userInfo){
       this.$emit('change', userInfo)
     },

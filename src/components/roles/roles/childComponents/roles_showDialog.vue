@@ -5,13 +5,14 @@
     width="30%"
     :before-close="isFalse"
     @close="close">
-    <el-tree :data="message"
-             :props="defaultProps"
-             show-checkbox
-             node-key="id"
-             :default-checked-keys="arr"
-             :default-expand-all="true"
-             ref="tree"/>
+    <el-tree
+      :data="message"
+      :props="defaultProps"
+      show-checkbox
+      node-key="id"
+      :default-checked-keys="arr"
+      :default-expand-all="true"
+      ref="tree"/>
     <span slot="footer" class="dialog-footer">
       <el-button @click="isFalse">取 消</el-button>
       <el-button type="primary" @click="commit">确 定</el-button>

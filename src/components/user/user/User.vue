@@ -16,15 +16,16 @@
         <el-button type="primary" round @click="dialogVisible">添加用户</el-button>
       </el-col>
     </el-row>
-    <users_table :users="users"
-                 :total="total"
-                 :usersMes="usersMes"
-                 @handleSizeChange="handleSizeChange"
-                 @handleCurrentChange="handleCurrentChange"
-                 @change="change"
-                 @reGet="reGet"
-                 @editUserMes="editUserMes"
-                 @updateMes="getUsersMes"/>
+    <users_table
+      :users="users"
+      :total="total"
+      :usersMes="usersMes"
+      @handleSizeChange="handleSizeChange"
+      @handleCurrentChange="handleCurrentChange"
+      @change="change"
+      @reGet="reGet"
+      @editUserMes="editUserMes"
+      @updateMes="getUsersMes"/>
   </el-card>
   <users_addDialog :isShow="isShow" @isFalse="isFalse" @commit="commit"/>
 </div>

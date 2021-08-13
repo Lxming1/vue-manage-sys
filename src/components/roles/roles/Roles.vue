@@ -6,11 +6,12 @@
   </breadcrumb>
   <el-card>
     <el-button type="primary" @click="isShow = true">添加角色</el-button>
-    <roles_table :rolesMes="rolesMes"
-                 @reGet="reGet"
-                 @deleteLimit="deleteLimit"
-                 @updateMes="getRolesMes"
-                 @editRoleMes="editRoleMes"/>
+    <roles_table
+      :rolesMes="rolesMes"
+      @reGet="reGet"
+      @deleteLimit="deleteLimit"
+      @updateMes="getRolesMes"
+      @editRoleMes="editRoleMes"/>
   </el-card>
   <roles_addDialog :isShow="isShow" @isFalse="isShow = false" @commit="commit"/>
 </div>

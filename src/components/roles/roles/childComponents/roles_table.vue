@@ -9,27 +9,32 @@
       border>
       <el-table-column type="expand">
         <template slot-scope="scope">
-          <el-row :key="tag.id"
-                  v-for="tag in scope.row.children"
-                  :class="['bBorder', index === 0 ? 'tBorder' : '']">
+          <el-row
+            :key="tag.id"
+            v-for="tag in scope.row.children"
+            :class="['bBorder', index === 0 ? 'tBorder' : '']">
             <el-col :span="5">
               <el-tag closable @close="deletedIt(scope.$index, tag.id)"> {{tag.authName}} </el-tag>
               <i class="el-icon-caret-right"/>
             </el-col>
             <el-col :span="19">
-              <el-row :key="tag1.id"
-                      v-for="(tag1,index1) in tag.children"
-                      :class="[index1 === 0 ? '' : 'tBorder']">
+              <el-row
+                :key="tag1.id"
+                v-for="(tag1,index1) in tag.children"
+                :class="[index1 === 0 ? '' : 'tBorder']">
                 <el-col :span="6">
-                  <el-tag type="success" closable @close="deletedIt(scope.$index, tag1.id)"> {{tag1.authName}} </el-tag>
+                  <el-tag type="success" closable @close="deletedIt(scope.$index, tag1.id)">
+                    {{tag1.authName}}
+                  </el-tag>
                   <i class="el-icon-caret-right"/>
                 </el-col>
                 <el-col :span="18">
-                  <el-tag closable
-                          :key="tag2.id"
-                          v-for="tag2 in tag1.children"
-                          type="warning"
-                          @close="deletedIt(scope.$index, tag2.id)">
+                  <el-tag
+                    closable
+                    :key="tag2.id"
+                    v-for="tag2 in tag1.children"
+                    type="warning"
+                    @close="deletedIt(scope.$index, tag2.id)">
                     {{tag2.authName}}
                   </el-tag>
                 </el-col>
@@ -43,20 +48,28 @@
       <el-table-column prop="roleDesc" label="角色描述"></el-table-column>
       <el-table-column prop="mobile" label="操作">
         <template slot-scope="scope">
-          <el-button icon="el-icon-edit" type="primary" size="mini" @click="editMes(scope.row)">编辑</el-button>
-          <el-button icon="el-icon-delete" type="danger" size="mini" @click="deleted(scope.$index)">删除</el-button>
-          <el-button icon="el-icon-setting" type="warning" size="mini" @click="showDialog(scope.$index)">分配权限</el-button>
+          <el-button icon="el-icon-edit" type="primary" size="mini"
+                     @click="editMes(scope.row)">编辑</el-button>
+          <el-button icon="el-icon-delete" type="danger" size="mini"
+                     @click="deleted(scope.$index)">删除</el-button>
+          <el-button icon="el-icon-setting" type="warning" size="mini"
+                     @click="showDialog(scope.$index)">分配权限</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <roles_showDialog :dialogVisible="dialogVisible"
-                      @isFalse="isFalse"
-                      :message="treeMes"
-                      @mesNull="mesNull"
-                      :arr="arr"
-                      @commit="editCommit"
-                      ref="showDialog"/>
-    <roles_editDialog :editShow="editShow" @isFalse="isFalses" :editObj="editObj" @editRoleMes="editRoleMes"/>
+    <roles_showDialog
+      :dialogVisible="dialogVisible"
+      @isFalse="isFalse"
+      :message="treeMes"
+      @mesNull="mesNull"
+      :arr="arr"
+      @commit="editCommit"
+      ref="showDialog"/>
+    <roles_editDialog
+      :editShow="editShow"
+      @isFalse="isFalses"
+      :editObj="editObj"
+      @editRoleMes="editRoleMes"/>
   </div>
 </template>
 
