@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import users_addRoles from './users_addRoles'
-import users_editDialog from './users_editDialog'
+import users_addRoles from './users_table_addRoles'
+import users_editDialog from './users_table_editDialog'
 import {pagination} from '@/common/mixin'
 
 export default {

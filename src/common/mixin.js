@@ -34,3 +34,26 @@ export const pagination = {
     },
   }
 }
+
+export const addDialogCom = {
+  props:{
+    isShow:{
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    isFalse() {
+      this.$emit('isFalse')
+    },
+    commit() {
+      this.$refs.formRef.validate(valid =>{
+        if(!valid) return
+        this.$emit('commit', this.message)
+      })
+    },
+    showMes(mes) {
+      return '请输入' + mes
+    }
+  }
+}

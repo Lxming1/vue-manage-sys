@@ -22,14 +22,10 @@
 </template>
 
 <script>
+import {addDialogCom} from '@/common/mixin'
 export default {
   name: "roles_addDialog",
-  props:{
-    isShow:{
-      type: Boolean,
-      default: false
-    }
-  },
+  mixins: [addDialogCom],
   data(){
     return{
       addMes:['角色名称', '角色描述'],
@@ -40,18 +36,6 @@ export default {
     }
   },
   methods:{
-    isFalse() {
-      this.$emit('isFalse')
-    },
-    commit(){
-      this.$refs.formRef.validate(valid =>{
-        if(!valid) return
-        this.$emit('commit', this.message)
-      })
-    },
-    showMes(mes) {
-      return '请输入' + mes
-    },
     isPassword(item){
       if(item === '密码'){
         return 'password'

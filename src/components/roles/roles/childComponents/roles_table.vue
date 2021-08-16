@@ -46,7 +46,7 @@
       <el-table-column type="index" label="#" width="50"></el-table-column>
       <el-table-column prop="roleName" label="角色名称"></el-table-column>
       <el-table-column prop="roleDesc" label="角色描述"></el-table-column>
-      <el-table-column prop="mobile" label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button icon="el-icon-edit" type="primary" size="mini"
                      @click="editMes(scope.row)">编辑</el-button>
@@ -59,23 +59,23 @@
     </el-table>
     <roles_showDialog
       :dialogVisible="dialogVisible"
-      @isFalse="isFalse"
       :message="treeMes"
-      @mesNull="mesNull"
       :arr="arr"
+      @mesNull="mesNull"
+      @isFalse="isFalse"
       @commit="editCommit"
       ref="showDialog"/>
     <roles_editDialog
       :editShow="editShow"
-      @isFalse="isFalses"
       :editObj="editObj"
+      @isFalse="isFalses"
       @editRoleMes="editRoleMes"/>
   </div>
 </template>
 
 <script>
-import roles_editDialog from './roles_editDialog'
-import roles_showDialog from './roles_showDialog'
+import roles_editDialog from './roles_table_editDialog'
+import roles_showDialog from './roles_table_showDialog'
 export default {
   name: "roles_table",
   components:{

@@ -9,6 +9,7 @@ ElementUI()
 axios()
 
 Vue.config.productionTip = false
+Vue.prototype.$bus = new Vue()
 
 Vue.component('tree-table', ZKTable)
 

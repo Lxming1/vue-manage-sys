@@ -78,8 +78,8 @@ export default {
       const {data: res} = await this.$http.post('categories', mes)
       if(res.meta.status !== 201) return this.$message.error('添加商品失败！')
       this.$message.success('添加商品成功！')
-      await this.getCateMes()
       this.showAddDig = false
+      await this.getCateMes()
     },
     //获取父级分类的数据列表
     async getParentMes(){

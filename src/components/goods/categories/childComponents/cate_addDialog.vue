@@ -13,7 +13,6 @@
         <el-input
           v-model="message.cat_name"
           :placeholder="showMes(item)"
-          :prop="index ? 'cat_name' : null"
           v-if="index === 0"/>
         <el-cascader
           v-model="parentChange"
@@ -34,13 +33,11 @@
 </template>
 
 <script>
+import {addDialogCom} from '@/common/mixin'
 export default {
   name: "cate_addDialog",
+  mixins:[addDialogCom],
   props:{
-    isShow: {
-      type: Boolean,
-      default: false
-    },
     cateMes:{
       type: Array,
       default(){
@@ -71,18 +68,6 @@ export default {
     }
   },
   methods: {
-    isFalse() {
-      this.$emit('isFalse')
-    },
-    commit() {
-      this.$refs.formRef.validate(valid =>{
-        if(!valid) return
-        this.$emit('commit', this.message)
-      })
-    },
-    showMes(mes) {
-      return '请输入' + mes
-    },
     close(){
       this.$refs.formRef.resetFields()
       this.message = {}
