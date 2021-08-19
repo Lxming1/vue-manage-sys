@@ -6,8 +6,15 @@
     :before-close="isFalse"
     @close="close"
     :close-on-click-modal="false">
-    <el-form label-width="70px" :model="message" ref="formRef" :rules="rules">
-      <el-form-item :label="title" prop="attr_name" label-width="90px">
+    <el-form
+      label-width="70px"
+      :model="message"
+      ref="formRef"
+      :rules="rules">
+      <el-form-item
+        :label="title"
+        prop="attr_name"
+        label-width="90px">
         <el-input
           v-model="message.attr_name"
           :placeholder="'请输入' + title"/>

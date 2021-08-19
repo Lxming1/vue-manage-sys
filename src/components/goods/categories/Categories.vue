@@ -7,7 +7,11 @@
   <el-card>
     <el-row>
       <el-col>
-        <el-button type="primary" @click="addGoods">添加商品</el-button>
+        <el-button
+          type="primary"
+          @click="addGoods">
+          添加商品
+        </el-button>
       </el-col>
     </el-row>
     <cate_table
@@ -15,9 +19,14 @@
       :cateList="cateList"
       :querInfo="querInfo"
       @handleSizeChange="handleSizeChange"
-      @handleCurrentChange="handleCurrentChange" @deleteCate="deleteCate"/>
+      @handleCurrentChange="handleCurrentChange"
+      @deleteCate="deleteCate"/>
   </el-card>
-  <cate_addDialog :isShow="showAddDig" @isFalse="isFalse" @commit="commit" :cateMes="cateMes"/>
+  <cate_addDialog
+    :isShow="showAddDig"
+    @isFalse="isFalse"
+    @commit="commit"
+    :cateMes="cateMes"/>
 </div>
 </template>
 

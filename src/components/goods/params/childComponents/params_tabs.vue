@@ -85,7 +85,6 @@ export default {
       if(res.meta.status !== 200) return this.$message.error('获取参数列表失败！')
       if(this.activeName === 'many') this.manyArr = res.data
       else this.onlyArr = res.data
-      console.log(res.data)
     },
     //添加按钮
     async commit(mes){

@@ -5,17 +5,12 @@
     <span slot="one">用户管理</span>
     <span slot="two">用户列表</span>
   </breadcrumb>
+<!--  Main-->
   <el-card>
-    <el-row :gutter="20">
-      <el-col :span="8">
-        <el-input placeholder="请输入内容" clearable @clear="getUsersMes" v-model="usersMes.query">
-          <el-button slot="append" icon="el-icon-search" @click="getUsersMes"></el-button>
-        </el-input>
-      </el-col>
-      <el-col :span="4">
-        <el-button type="primary" round @click="dialogVisible">添加用户</el-button>
-      </el-col>
-    </el-row>
+    <users_addUserInput
+      @getUsersMes="getUsersMes"
+      :usersMes="usersMes"
+      @isShow="dialogVisible"/>
     <users_table
       :users="users"
       :total="total"
@@ -27,21 +22,26 @@
       @editUserMes="editUserMes"
       @updateMes="getUsersMes"/>
   </el-card>
-  <users_addDialog :isShow="isShow" @isFalse="isFalse" @commit="commit"/>
+  <users_addDialog
+    :isShow="isShow"
+    @isFalse="isFalse"
+    @commit="commit"/>
 </div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb'
-import users_table from '@/components/user/user/childComponents/users_table'
-import users_addDialog from '@/components/user/user/childComponents/users_addDialog'
+import users_table from './childComponents/users_table'
+import users_addDialog from './childComponents/users_addDialog'
+import users_addUserInput from './childComponents/users_addUserInput'
 
 export default {
   name: "User",
   components:{
     breadcrumb,
     users_table,
-    users_addDialog
+    users_addDialog,
+    users_addUserInput
   },
   data(){
     return{

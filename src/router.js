@@ -10,7 +10,8 @@ const user = () => import('./components/user/user/User')
 const roles = () => import('./components/roles/roles/Roles')
 const rights = () => import('./components/roles/rights/Rights')
 
-const goods = () => import('./components/goods/goods/Goods')
+const goodsList = () => import('./components/goods/goodsList/GoodsList')
+const addGoods = () => import('./components/goods/goodsList/childComponents/Goods_AddGoodsView')
 const params = () => import('./components/goods/params/Params')
 const categories = () => import('./components/goods/categories/Categories')
 
@@ -34,7 +35,7 @@ const children = [{
   component: rights
 }, {
   path: '/goods',
-  component: goods
+  component: goodsList
 }, {
   path: '/params',
   component: params
@@ -47,6 +48,9 @@ const children = [{
 }, {
   path: '/reports',
   component: reports
+}, {
+  path: '/goods/add',
+  component: addGoods
 }]
 
 const router = new Router({

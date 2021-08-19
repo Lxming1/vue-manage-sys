@@ -16,7 +16,11 @@
     size="small"
     @keyup.enter.native="$event.target.blur()"
     @blur="handleInputConfirm"/>
-  <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+  <el-button
+    v-else
+    class="button-new-tag"
+    size="small"
+    @click="showInput">+ New Tag</el-button>
 </div>
 </template>
 
@@ -53,7 +57,6 @@ export default {
     getTags(){
       if(this.scope.attr_vals){
         this.tagArr = this.scope.attr_vals.split(' ')
-        console.log(this.tagArr)
       }
     },
     showInput(){

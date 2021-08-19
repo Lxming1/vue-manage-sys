@@ -5,7 +5,11 @@
     <span slot="two">角色列表</span>
   </breadcrumb>
   <el-card>
-    <el-button type="primary" @click="isShow = true">添加角色</el-button>
+    <el-button
+      type="primary"
+      @click="isShow = true">
+      添加角色
+    </el-button>
     <roles_table
       :rolesMes="rolesMes"
       @reGet="reGet"
@@ -13,7 +17,10 @@
       @updateMes="getRolesMes"
       @editRoleMes="editRoleMes"/>
   </el-card>
-  <roles_addDialog :isShow="isShow" @isFalse="isShow = false" @commit="commit"/>
+  <roles_addDialog
+    :isShow="isShow"
+    @isFalse="isShow = false"
+    @commit="commit"/>
 </div>
 </template>
 
