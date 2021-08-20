@@ -9,7 +9,7 @@
       <el-form-item :label="item" v-for="(item,index) in addMes"
                     :prop="Object.keys(userMes)[index+1]">
         <el-input v-model="userMes[Object.keys(userMes)[index+1]]"
-                  :placeholder="showMes(item)" :disabled="!isUsername(item)"></el-input>
+                  :placeholder="showMes(item)" :disabled="!isUsername(item)"/>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

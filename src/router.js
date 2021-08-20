@@ -15,7 +15,7 @@ const addGoods = () => import('./components/goods/goodsList/childComponents/Good
 const params = () => import('./components/goods/params/Params')
 const categories = () => import('./components/goods/categories/Categories')
 
-const orders = () => import('./components/orders/Orders')
+const orders = () => import('./components/orders/orders/Orders')
 
 const reports = () => import('./components/reports/Reports')
 

@@ -16,7 +16,7 @@
           {{scope.row.add_time | showDate}}
         </template>
       </el-table-column>
-      <el-table-column label="操作"  width="120px">
+      <el-table-column label="操作" width="120px">
         <template slot-scope="scope">
           <el-tooltip
             effect="dark"
@@ -59,15 +59,14 @@
 
 <script>
 import goods_table_editDialog from './goods_table_editDialog'
-import {pagination} from '@/common/mixin'
-import {formatDate} from '@/common/utils'
+import {pagination, showTime} from '@/common/mixin'
 
 export default {
   name: "goods_table",
   components:{
     goods_table_editDialog
   },
-  mixins:[pagination],
+  mixins:[pagination, showTime],
   props:{
     goods: {
       type: Array,
@@ -107,12 +106,6 @@ export default {
       const {id, username} = this.users[index]
       this.onlyUser = {id, username, email:'', mobile:''}
       this.isShow = true
-    }
-  },
-  filters:{
-    showDate: function (value) {
-      let date = new Date(value*1000);
-      return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
     }
   }
 }
