@@ -17,7 +17,7 @@ const categories = () => import('./components/goods/categories/Categories')
 
 const orders = () => import('./components/orders/orders/Orders')
 
-const reports = () => import('./components/reports/Reports')
+const reports = () => import('./components/reports/reports/Reports')
 
 Vue.use(Router)
 

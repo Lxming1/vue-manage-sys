@@ -236,8 +236,6 @@ export default {
         })
         form.attrs = this.addForm.attrs
         const {data: res} = await this.$http.post('goods', form)
-        console.log(form)
-        console.log(res)
         if(res.meta.status !== 201 && res.meta.msg !== '商品名称以存在') return this.$message.error(`创建商品失败！`)
         this.$message.success('创建商品成功！')
         await this.$router.push('/goods')
