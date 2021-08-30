@@ -51,11 +51,6 @@ export default {
     }
     return{
       addMes: ['用户名', '邮箱', '手机'],
-      message:{
-        username: '',
-        email: '',
-        mobile: ''
-      },
       rules:{
         email: [
           {required: true, message: '请输入邮箱', trigger: 'blur'},

@@ -27,7 +27,7 @@
               icon="el-icon-edit"
               type="primary"
               size="mini"
-              @click="editMes(scope.$index)"/>
+              @click="editClick(scope.row)"/>
           </el-tooltip>
           <el-tooltip
             effect="dark"
@@ -53,7 +53,11 @@
       :page-size="goodsMes.pagesize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"/>
-    <goods_table_editDialog />
+    <goods_table_editDialog
+      :isShow="editShow"
+      @isFalse="editShow = false"
+      :goodsMes="editMes"
+      @editCommit="editCommit"/>
   </div>
 </template>
 
@@ -87,6 +91,9 @@ export default {
   },
   data(){
     return {
+      editShow: false,
+      editMes: {},
+      currentId: 0
     }
   },
   methods:{
@@ -102,10 +109,22 @@ export default {
       if(confirm !== 'confirm') return this.$message.info('已取消删除')
       this.$emit('reGet', index)
     },
-    editMes(index){
-      const {id, username} = this.users[index]
-      this.onlyUser = {id, username, email:'', mobile:''}
-      this.isShow = true
+    editClick(mes){
+      this.editShow = true
+      this.currentId = mes.goods_id
+      this.editMes = {
+        goods_name: mes.goods_name,
+        goods_price: mes.goods_price,
+        goods_weight: mes.goods_weight,
+        goods_number: mes.goods_number,
+        goods_introduce: '',
+        pics: [],
+        attrs: []
+      }
+    },
+    async editCommit(mes){
+      const {data: res} = await this.$http.put(`goods/${this.currentId}`, mes)
+      if(res.meta.status !== 201) return this.$message.error(res.meta.msg)
     }
   }
 }

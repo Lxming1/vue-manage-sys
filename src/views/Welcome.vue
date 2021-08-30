@@ -1,7 +1,7 @@
 <template>
-<div>
-  Welcome
-</div>
+<h2>
+  Welcome to the background management system
+</h2>
 </template>
 
 <script>
